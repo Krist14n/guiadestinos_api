@@ -34,3 +34,6 @@ Route::resource("regiones", "RegionesController");
 Route::resource("estados", "EstadosController");
 
 Route::resource("ciudades", "CiudadesController");
+
+Route::resource("hoteles", "HotelesController");
+

@@ -2,19 +2,38 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Region;
+use App\Estado;
+use App\Ciudad;
+use App\Hotel;
 use Illuminate\Http\Request;
 
 class HotelesController extends Controller {
+	/**
+	* Create a new controller instance
+	*
+	* @return void
+	*/
+	public function __construct(Estado $estado, Region $region, Ciudad $ciudad, Hotel $hotel)
+	{
+		$this->middleware('auth');
+		$this->estado 	= 	$estado;
+		$this->region 	= 	$region;
+		$this->ciudad 	= 	$ciudad;
+		$this->hotel 	= 	$hotel;
+
+	}
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Hotel $hotel)
 	{
 		//
+		$hoteles = $hotel->get();
+		return view('hoteles', compact('hoteles'));
 	}
 
 	/**
@@ -25,6 +44,9 @@ class HotelesController extends Controller {
 	public function create()
 	{
 		//
+		$ciudades = $this->ciudad->get();
+
+		return view('crear_hoteles', compact('ciudades'));
 	}
 
 	/**
