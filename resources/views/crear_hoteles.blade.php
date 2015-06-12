@@ -20,6 +20,9 @@
 			{!! Form::text('nombre', null, ['class'=> 'form-control', 'id' => 'nombre']) !!}
 
 		</div>
+		<div class="form-group">
+			{!! Form::hidden('categoria_id', '1') !!}
+		</div>
 
 		<div class="form-group">
 			<label for="descripcion">Descripción</label>

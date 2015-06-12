@@ -6,6 +6,8 @@ use App\Region;
 use App\Estado;
 use App\Ciudad;
 use App\Hotel;
+use App\Direccion;
+
 use Illuminate\Http\Request;
 
 class HotelesController extends Controller {
@@ -21,7 +23,6 @@ class HotelesController extends Controller {
 		$this->region 	= 	$region;
 		$this->ciudad 	= 	$ciudad;
 		$this->hotel 	= 	$hotel;
-
 	}
 
 	/**
@@ -54,10 +55,46 @@ class HotelesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
-	}
+		
+		//Validar estos Requests
+		$nombre 		=	$request->nombre;
+		$ciudad_id 		= 	$request->ciudad_id;
+		$categoria_id 	= 	$request->categoria_id;
+		$descripcion 	= 	$request->descripcion;
+		$web 			= 	$request->web;
+		$promocion 		= 	$request->promocion;
+		$token 			=   $request->_token;
+		
+		$direccion 		=	$request->direccion;
+		$latitud		= 	$request->latitud;
+		$longitud		=	$request->longitud;
+		$telefono 		=   $request->telefono;
+
+
+		//Una vez validados los requests
+		$hotel = Hotel::create(array(
+			'nombre' 		=>	$nombre,
+			'ciudad_id' 	=>	$ciudad_id,
+			'categoria_id'	=> 	$categoria_id,
+			'descripcion'	=> 	$descripcion,
+			'web'			=>	$web,
+			'promocion'		=>	$promocion,
+			'_token'		=>	$token
+		));
+
+		$direccion = Direccion::create(array(
+			'direccion'		=> 	$direccion,
+			'latitud'		=>	$latitud,
+			'longitud'		=>	$longitud,
+			'telefono'		=> 	$telefono
+		));
+
+		$hotel->direccion()->save($direccion);
+
+		return redirect('hoteles');
+	}	
 
 	/**
 	 * Display the specified resource.

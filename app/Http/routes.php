@@ -35,5 +35,7 @@ Route::resource("estados", "EstadosController");
 
 Route::resource("ciudades", "CiudadesController");
 
-Route::resource("hoteles", "HotelesController");
+Route::group([ 'before' => 'csrf' ], function(){
+	Route::resource("hoteles", "HotelesController");
+});
 
