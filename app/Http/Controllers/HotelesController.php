@@ -16,13 +16,14 @@ class HotelesController extends Controller {
 	*
 	* @return void
 	*/
-	public function __construct(Estado $estado, Region $region, Ciudad $ciudad, Hotel $hotel)
+	public function __construct(Estado $estado, Region $region, Ciudad $ciudad, Hotel $hotel, Direccion $direccion)
 	{
 		$this->middleware('auth');
-		$this->estado 	= 	$estado;
-		$this->region 	= 	$region;
-		$this->ciudad 	= 	$ciudad;
-		$this->hotel 	= 	$hotel;
+		$this->estado 		= 	$estado;
+		$this->region 		= 	$region;
+		$this->ciudad 		= 	$ciudad;
+		$this->hotel 		= 	$hotel;
+		$this->direccion 	= 	$direccion;
 	}
 
 	/**
@@ -116,6 +117,14 @@ class HotelesController extends Controller {
 	public function edit($id)
 	{
 		//
+		$hotel = $this->hotel->whereId($id)->first();
+
+		$direccion = $this->direccion->whereHotel_id($id)->first();
+
+		$ciudades = $this->ciudad->get();
+		
+		return view('edita_hoteles', compact('hotel','ciudades', 'direccion'));
+	
 	}
 
 	/**
@@ -124,9 +133,51 @@ class HotelesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+
+		//Validar estos Requests
+		$nombre 		=	$request->nombre;
+		$ciudad_id 		= 	$request->ciudad_id;
+		$categoria_id 	= 	$request->categoria_id;
+		$descripcion 	= 	$request->descripcion;
+		$web 			= 	$request->web;
+		$promocion 		= 	$request->promocion;
+		$token 			=   $request->_token;
+		
+		$direccion 		=	$request->direccion;
+		$latitud		= 	$request->latitud;
+		$longitud		=	$request->longitud;
+		$telefono 		=   $request->telefono;
+
+
+		//Una vez validados los requests
+		
+		$hotel = Hotel::where('id', '=', $id)->update(array(
+			'nombre' 		=>	$nombre,
+			'ciudad_id' 	=>	$ciudad_id,
+			'categoria_id'	=> 	$categoria_id,
+			'descripcion'	=> 	$descripcion,
+			'web'			=>	$web,
+			'promocion'		=>	$promocion,
+			'_token'		=>	$token
+		));
+
+		$direccion = Direccion::where('hotel_id','=',$id)->update(array(
+			'direccion'		=> 	$direccion,
+			'latitud'		=>	$latitud,
+			'longitud'		=>	$longitud,
+			'telefono'		=> 	$telefono
+		));
+
+
+		//$dir = Direccion::where('hotel_id', '=', $id);
+
+
+		//Hotel::find($id)->direccion()->associate($dir)->save();
+
+		return redirect('hoteles');
+
 	}
 
 	/**

@@ -23,6 +23,11 @@ class Direccion extends Model {
 			'latitud',
 			'longitud'
 		];
+	public function hotel()
+
+	{
+		return $this->belongsTo('Hotel');
+	}
 
 	public function restaurant()
 	{
