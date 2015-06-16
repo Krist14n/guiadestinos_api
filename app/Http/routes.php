@@ -39,3 +39,7 @@ Route::resource("hoteles", "HotelesController");
 
 Route::resource("restaurantes", "RestaurantesController");
 
+Route::resource("spas", "SpasController");
+
+
+
