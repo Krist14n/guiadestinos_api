@@ -35,6 +35,7 @@ class RestaurantesController extends Controller {
 	{
 		//
 		$restaurantes = $restaurante->get();
+		
 
 		return view('restaurantes', compact('restaurantes'));
 	}
