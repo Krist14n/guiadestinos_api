@@ -37,12 +37,13 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				<!--<li><a href="{{ url('/') }}">Home</a></li>-->
-					<li><a href="{{ url('/regiones')}}">Regiones</a></li>
+					<li><a href="{{ url('/regiones') }}">Regiones</a></li>
 					<li><a href="{{ url('/estados') }}">Estados</a></li>
-					<li><a href="{{ url('/ciudades')}}">Ciudades</a></li>
+					<li><a href="{{ url('/ciudades') }}">Ciudades</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Destinos<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/highlights') }}">Highlights</a></li>
 								<li><a href=" {{ url('/hoteles') }}">Hoteles</a></li>
 								<li><a href="{{ url('/restaurantes') }}">Restaurantes</a></li>
 								<li><a href="{{ url('/spas') }}">Spas</a></li>

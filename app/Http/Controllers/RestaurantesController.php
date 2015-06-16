@@ -5,38 +5,38 @@ use App\Http\Controllers\Controller;
 use App\Region;
 use App\Estado;
 use App\Ciudad;
-use App\Hotel;
+use App\Restaurante;
 use App\Direccion;
-
 use Illuminate\Http\Request;
 
-class HotelesController extends Controller {
+class RestaurantesController extends Controller {
 	/**
 	* Create a new controller instance
 	*
 	* @return void
 	*/
-	public function __construct(Estado $estado, Region $region, Ciudad $ciudad, Hotel $hotel, Direccion $direccion)
+	public function __construct(Estado $estado, Region $region, Ciudad $ciudad, Restaurante $restaurante, Direccion $direccion)
 	{
 		$this->middleware('auth');
 		$this->estado 		= 	$estado;
 		$this->region 		= 	$region;
 		$this->ciudad 		= 	$ciudad;
-		$this->hotel 		= 	$hotel;
+		$this->restaurante 	= 	$restaurante;
 		$this->direccion 	= 	$direccion;
 	}
+
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index(Hotel $hotel, Region $regiones, Estado $estado, Ciudad $ciudad)
+	public function index(Restaurante $restaurante)
 	{
 		//
-		$hoteles = $hotel->get();
-		
-		return view('hoteles', compact('hoteles'));
+		$restaurantes = $restaurante->get();
+
+		return view('restaurantes', compact('restaurantes'));
 	}
 
 	/**
@@ -44,12 +44,12 @@ class HotelesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(Ciudad $ciudad)
 	{
 		//
-		$ciudades = $this->ciudad->get();
+		$ciudades = $ciudad->get();
 
-		return view('crear_hoteles', compact('ciudades'));
+		return view('crear_restaurantes', compact('ciudades'));
 	}
 
 	/**
@@ -58,17 +58,19 @@ class HotelesController extends Controller {
 	 * @return Response
 	 */
 	public function store(Request $request)
-	{
-		
+	{	
+
 		//Validar estos Requests
 		$nombre 		=	$request->nombre;
 		$ciudad_id 		= 	$request->ciudad_id;
 		$categoria_id 	= 	$request->categoria_id;
 		$descripcion 	= 	$request->descripcion;
+		$recomendacion  =   $request->recomendacion;
+		$tipo_comida    =   $request->tipo_comida;
 		$web 			= 	$request->web;
 		$promocion 		= 	$request->promocion;
 		$token 			=   $request->_token;
-		
+
 		$direccion 		=	$request->direccion;
 		$latitud		= 	$request->latitud;
 		$longitud		=	$request->longitud;
@@ -76,8 +78,10 @@ class HotelesController extends Controller {
 
 
 		//Una vez validados los requests
-		$hotel = Hotel::create(array(
+		$restaurante = Restaurante::create(array(
 			'nombre' 		=>	$nombre,
+			'tipo_comida'	=> 	$tipo_comida,
+			'recomendacion_mb'	=> 	$recomendacion,
 			'ciudad_id' 	=>	$ciudad_id,
 			'categoria_id'	=> 	$categoria_id,
 			'descripcion'	=> 	$descripcion,
@@ -93,10 +97,10 @@ class HotelesController extends Controller {
 			'telefono'		=> 	$telefono
 		));
 
-		$hotel->direccion()->save($direccion);
+		$restaurante->direccion()->save($direccion);
 
-		return redirect('hoteles');
-	}	
+		return redirect('restaurantes');
+	}
 
 	/**
 	 * Display the specified resource.
@@ -105,10 +109,9 @@ class HotelesController extends Controller {
 	 * @return Response
 	 */
 	public function show($id)
-	{
+	{	
 		//
-
-
+		
 	}
 
 	/**
@@ -120,14 +123,13 @@ class HotelesController extends Controller {
 	public function edit($id)
 	{
 		//
-		$hotel = $this->hotel->whereId($id)->first();
+		$restaurante = $this->restaurante->whereId($id)->first();
 
-		$direccion = $this->direccion->whereHotel_id($id)->first();
+		$direccion = $this->direccion->whereRestaurante_id($id)->first();
 
 		$ciudades = $this->ciudad->get();
 		
-		return view('edita_hoteles', compact('hotel','ciudades', 'direccion'));
-	
+		return view('edita_restaurantes', compact('restaurante','ciudades', 'direccion'));
 	}
 
 	/**
@@ -138,26 +140,27 @@ class HotelesController extends Controller {
 	 */
 	public function update($id, Request $request)
 	{
-
 		//Validar estos Requests
 		$nombre 		=	$request->nombre;
 		$ciudad_id 		= 	$request->ciudad_id;
 		$categoria_id 	= 	$request->categoria_id;
 		$descripcion 	= 	$request->descripcion;
+		$recomendacion  =   $request->recomendacion;
+		$tipo_comida    =   $request->tipo_comida;
 		$web 			= 	$request->web;
 		$promocion 		= 	$request->promocion;
 		$token 			=   $request->_token;
-		
+
 		$direccion 		=	$request->direccion;
 		$latitud		= 	$request->latitud;
 		$longitud		=	$request->longitud;
 		$telefono 		=   $request->telefono;
 
-
 		//Una vez validados los requests
-		
-		$hotel = Hotel::where('id', '=', $id)->update(array(
+		$restaurante = Restaurante::where('id', '=', $id)->update(array(
 			'nombre' 		=>	$nombre,
+			'tipo_comida'	=> 	$tipo_comida,
+			'recomendacion_mb'	=> 	$recomendacion,
 			'ciudad_id' 	=>	$ciudad_id,
 			'categoria_id'	=> 	$categoria_id,
 			'descripcion'	=> 	$descripcion,
@@ -166,14 +169,14 @@ class HotelesController extends Controller {
 			'_token'		=>	$token
 		));
 
-		$direccion = Direccion::where('hotel_id','=',$id)->update(array(
+		$direccion = Direccion::where('restaurante_id', '=', $id)->update(array(
 			'direccion'		=> 	$direccion,
 			'latitud'		=>	$latitud,
 			'longitud'		=>	$longitud,
 			'telefono'		=> 	$telefono
 		));
 
-		return redirect('hoteles');
+		return redirect('restaurantes');
 
 	}
 

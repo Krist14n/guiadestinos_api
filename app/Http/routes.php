@@ -37,4 +37,5 @@ Route::resource("ciudades", "CiudadesController");
 
 Route::resource("hoteles", "HotelesController");
 
+Route::resource("restaurantes", "RestaurantesController");
 

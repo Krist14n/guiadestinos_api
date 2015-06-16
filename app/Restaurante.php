@@ -13,10 +13,22 @@ class Restaurante extends Model {
 	use SoftDeletes;
 
 	protected $dates = ['deleted_at'];
-
+	protected $fillable = 
+		[
+			'id',
+			'ciudad_id',
+			'categoria_id',
+			'nombre',
+			'descripcion',
+			'web',
+			'promocion',
+			'_token',
+			'recomendacion_mb',
+			'tipo_comida'
+		];
 	public function direccion()
 	{
-		return $this->hasMany('Direccion');
+		return $this->hasOne('App\Direccion');
 	}
 
 }
