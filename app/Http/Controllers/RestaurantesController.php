@@ -187,9 +187,13 @@ class RestaurantesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id, Restaurante $restaurante)
 	{
 		//
+		
+		$restaurantes = $this->restaurante->whereId($id)->first();
+		$restaurantes->delete();
+		return redirect('restaurantes');
 	}
 
 }

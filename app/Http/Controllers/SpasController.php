@@ -179,9 +179,12 @@ class SpasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id, Spa $spa)
 	{
 		//
+		$spas = $this->spa->whereId($id)->first();
+		$spas->delete();
+		return redirect('spas');
 	}
 
 }

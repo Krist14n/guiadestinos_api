@@ -14,8 +14,8 @@
           <th>Nombre</th>
           <!--<th>Región</th>
           <th>Estado</th>
-          <th>Ciudad</th>
-          <th>Acción</th>-->
+          <th>Ciudad</th>-->
+          <th>Acción</th>
         </tr>
       </thead>
 
@@ -31,9 +31,11 @@
 	          	<a href="/spas/{{ $spa->id }}/edit"><button type="button" class="btn btn-default">
 	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 				</button></a>
-				<button type="button" class="btn btn-danger">
+				{!! Form::open(array('route' => array('spas.destroy', $spa->id), 'method' => 'delete' )) !!}
+				<button type="submit" class="btn btn-danger">
 	  				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 				</button>
+				{!! Form::close() !!}
 			</td>
         </tr>
 		@endforeach	

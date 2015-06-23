@@ -114,9 +114,12 @@ class RegionesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id, Region $region)
 	{
 		//
+		$regiones = $this->region->whereId($id)->first();
+		$regiones->delete();
+		return redirect('regiones');
 	}
 
 }

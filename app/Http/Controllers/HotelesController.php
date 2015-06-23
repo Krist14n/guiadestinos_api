@@ -183,9 +183,12 @@ class HotelesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id, Hotel $hotel)
 	{
 		//
+		$hoteles = $this->hotel->whereId($id)->first();
+		$hoteles->delete();
+		return redirect('hoteles');
 	}
 
 }

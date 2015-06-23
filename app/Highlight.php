@@ -12,6 +12,18 @@ class Highlight extends Model {
 
 	use SoftDeletes;
 
+	protected $fillable = 
+	[
+		'id',
+		'ciudad_id',
+		'estado_id',
+		'nombre',
+		'descripcion',
+		'lista_highlights',
+		'foto',
+		'token'
+	];
+
 	protected $dates = ['deleted_at'];
 
 }

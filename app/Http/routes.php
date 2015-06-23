@@ -41,5 +41,9 @@ Route::resource("restaurantes", "RestaurantesController");
 
 Route::resource("spas", "SpasController");
 
+Route::resource("highlights", "HighlightsController");
+
+
+
 
 

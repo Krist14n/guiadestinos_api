@@ -27,9 +27,11 @@
 		  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					</button>
 				</a>
-				<button type="button" class="btn btn-danger">
+				{!! Form::open(array('route' => array('ciudades.destroy', $ciudad->id), 'method' => 'delete' )) !!}
+				<button type="submit" class="btn btn-danger">
 	  				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 				</button>
+				{!! Form::close() !!}
 			</td>
         </tr>
 		@endforeach	

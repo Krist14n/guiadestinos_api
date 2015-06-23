@@ -113,9 +113,12 @@ class CiudadesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id, Ciudad $ciudad)
 	{
 		//
+		$ciudades = $this->ciudad->whereId($id)->first();
+		$ciudades->delete();
+		return redirect('ciudades');
 	}
 
 }

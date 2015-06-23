@@ -31,9 +31,11 @@
 	          	<a href="/restaurantes/{{ $restaurante->id }}/edit"><button type="button" class="btn btn-default">
 	  				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 				</button></a>
-				<button type="button" class="btn btn-danger">
+				{!! Form::open(array('route' => array('restaurantes.destroy', $restaurante->id), 'method' => 'delete' )) !!}
+				<button type="submit" class="btn btn-danger">
 	  				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 				</button>
+				{!! Form::close() !!}
 			</td>
         </tr>
 		@endforeach	
