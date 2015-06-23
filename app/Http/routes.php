@@ -21,13 +21,7 @@ Route::controllers([
 ]);
 
 
-
-/*Route::bind("regiones", function($id)
-{
-	return App\Region::where('id', $id)->first();
-
-});*/
-
+//Rutas Admin
 
 Route::resource("regiones", "RegionesController");
 
@@ -44,6 +38,9 @@ Route::resource("spas", "SpasController");
 Route::resource("highlights", "HighlightsController");
 
 
+//Rutas App
+
+Route::resource("api_regiones", "ApiRegionesController");
 
 
 
