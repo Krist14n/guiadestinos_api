@@ -14,8 +14,8 @@
           <th>Nombre</th>
           <!--<th>Región</th>
           <th>Estado</th>
-          <th>Ciudad</th>
-          <th>Acción</th>-->
+          <th>Ciudad</th>-->
+          <th>Acción</th>
         </tr>
       </thead>
 
