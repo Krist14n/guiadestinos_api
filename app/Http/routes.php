@@ -42,6 +42,7 @@ Route::resource("highlights", "HighlightsController");
 
 Route::resource("api_regiones", "ApiRegionesController");
  
+ 
 Route::resource("api_estados", "ApiEstadosController");
 
 
