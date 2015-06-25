@@ -9,6 +9,12 @@ use App\Region;
 
 class ApiRegionesController extends Controller {
 
+	public function __construct()
+	{
+
+		$this->middleware("cors");
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
