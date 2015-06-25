@@ -38,9 +38,9 @@ Route::resource("spas", "SpasController");
 Route::resource("highlights", "HighlightsController");
 
 
-//Rutas App
 
 Route::resource("api_regiones", "ApiRegionesController");
+
 
 
 
