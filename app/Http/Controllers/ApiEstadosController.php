@@ -38,6 +38,7 @@ class ApiEstadosController extends Controller {
 	 */
 	public function store()
 	{
+	
 		//
 	}
 
