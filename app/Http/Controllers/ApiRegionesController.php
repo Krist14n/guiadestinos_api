@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Response;
 use App\Region;
+use App\Estado;
 
 class ApiRegionesController extends Controller {
-	
+
 
 	/**
 	 * Display a listing of the resource.
@@ -47,9 +48,12 @@ class ApiRegionesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, Region $region, Estado $estado)
 	{
 		//
+
+		return Response::json($estado->where('region_id', '=', $id)->get());
+
 
 	}
 
