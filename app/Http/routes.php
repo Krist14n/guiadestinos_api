@@ -38,7 +38,6 @@ Route::resource("spas", "SpasController");
 Route::resource("highlights", "HighlightsController");
 
 
-
 Route::resource("api_regiones", "ApiRegionesController");
 
 
