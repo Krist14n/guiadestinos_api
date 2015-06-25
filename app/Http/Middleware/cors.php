@@ -5,6 +5,23 @@ use Illuminate\Contracts\Routing\Middleware;
 use Illuminate\Http\Response;
 
 class cors {
+	/**
+	 * The Guard implementation.
+	 *
+	 * @var Guard
+	 */
+	protected $cors;
+	
+	/**
+	 * Create a new filter instance.
+	 *
+	 * @param  Guard  $auth
+	 * @return void
+	 */
+	public function __construct(Guard $cors)
+	{
+		$this->cors = $cors;
+	}
 
 	/**
 	 * Handle an incoming request.
