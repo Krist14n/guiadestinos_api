@@ -54,7 +54,7 @@ class ApiRestauranteCiudadController extends Controller {
 	{
 		//
 		$restaurant = DB::table('restaurantes')
-					->join('direcciones', 'restaurantes.id', '=', 'direcciones.restaurante.id')
+					->join('direcciones', 'restaurantes.id', '=', 'direcciones.restaurante_id')
 					->where('restaurantes.id', '=', $id)
 					->get();
 
