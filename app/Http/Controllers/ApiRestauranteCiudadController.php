@@ -10,6 +10,7 @@ use App\Estado;
 use App\Ciudad;
 use App\Direccion;
 use App\Restaurante;
+use App\DB;
 
 class ApiRestauranteCiudadController extends Controller {
 
