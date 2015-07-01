@@ -52,12 +52,12 @@ class ApiRestauranteCiudadController extends Controller {
 	public function show($id, Restaurante $restaurante, Direccion $direccion)
 	{
 		//
+		$restaurant = DB::table('restaurantes')
+					->join('direcciones', 'restaurantes.id', '=', 'direcciones.restaurante.id')
+					->where('restaurantes.id', '=', $id)
+					->get();
 
-		return Response::json($restaurante
-			->join('Direccion', $id, '=', 'Direccion.restaurante_id')
-			->order_by('id', 'desc')
-			->get()
-		);
+		return Response::json($restaurant);
 	}
 
 	/**
