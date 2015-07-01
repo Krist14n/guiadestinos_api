@@ -46,4 +46,4 @@ Route::resource("api_estados", "ApiEstadosController");
 
 Route::resource("api_restaurantes_ciudades", "ApiRestaurantesCiudadesController");
 
-
+Route::resource("api_restaurante_ciudad", "ApiRestauranteCiudadController");
