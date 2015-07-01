@@ -8,7 +8,7 @@ use Response;
 use App\Region;
 use App\Estado;
 use App\Ciudad;
-use App\Restaurante;
+use App\Hotel;
 
 class ApiHotelesCiudadesController extends Controller {
 
