@@ -51,7 +51,7 @@ class ApiRestaurantesCiudadesController extends Controller {
 	public function show($id, Ciudad $ciudad, Restaurante $restaurante)
 	{
 		//
-		return Response::json($restaurante->where('ciudad_id','=', $id));
+		return Response::json($restaurante->where('ciudad_id','=', $id)->where('categoria_id', '=', '2')->get());
 
 	}
 
