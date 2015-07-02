@@ -54,7 +54,7 @@ class ApiHotelCiudadController extends Controller {
 		//
 		$hotel = DB::table('hoteles')
 					->join('direcciones', 'hoteles.id', '=', 'direcciones.hotel_id')
-					->where('hotel.id', '=', $id)
+					->where('hoteles.id', '=', $id)
 					->get();
 
 		return Response::json($hotel);
