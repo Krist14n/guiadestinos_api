@@ -52,4 +52,8 @@ Route::resource("api_hoteles_ciudades", "ApiHotelesCiudadesController");
 
 Route::resource("api_hotel_ciudad", "ApiHotelCiudadController");
 
+Route::resource("api_spas_ciudades", "ApiSpasCiudadesController");
+
+Route::resource("api_spa_ciudad", "ApiSpaCiudadController");
+
 
