@@ -50,4 +50,6 @@ Route::resource("api_restaurante_ciudad", "ApiRestauranteCiudadController");
 
 Route::resource("api_hoteles_ciudades", "ApiHotelesCiudadesController");
 
+Route::resource("api_hotel_ciudad", "ApiHotelCiudadController");
+
 
