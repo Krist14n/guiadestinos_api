@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Highlight;
 use App\Estado;
+use Response;
 
 class ApiHighlightEstados extends Controller {
 
@@ -13,12 +14,10 @@ class ApiHighlightEstados extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Highlight $highlight)
 	{
 		//
-		$estado = DB::table('highlights')
-					->where('estado_id', '=', 9)
-					->get();
+		$estado = $highlight->where('estado_id', '=', '9')->get();
 
 		return Response::json($estado);
 	}
