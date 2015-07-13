@@ -4,7 +4,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Highlight;
 use App\Estado;
@@ -21,7 +20,7 @@ class ApiHighlightEstados extends Controller {
 	{
 		//
 		$estados = DB::table('estados')
-					->join('hightlights', 'hightlights.estado_id', '=', 'estados.id')
+					->join('highlights', 'highlights.estado_id', '=', 'estados.id')
 					->get();
 
 		return Response::json($spa);
