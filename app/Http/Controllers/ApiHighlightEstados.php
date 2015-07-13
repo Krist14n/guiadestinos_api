@@ -16,11 +16,8 @@ class ApiHighlightEstados extends Controller {
 	public function index()
 	{
 		//
-		$estados = DB::table('estados')
-					->join('highlights', 'highlights.estado_id', '=', 'estados.id')
-					->get();
 
-		return Response::json($estados);
+		return Response::json("hola");
 	}
 
 	/**
