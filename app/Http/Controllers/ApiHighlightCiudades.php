@@ -52,10 +52,9 @@ class ApiHighlightCiudades extends Controller {
 	{
 		//
 		$ciudades = DB::table('ciudades')
-					->join('highlights', 'highlights.ciudad_id', '=', 'ciudades.id')
-					->join('highlights', 'highlights.estado_id', '=', 'estados.id')
+					->join('highlights', 'ciudades.estado_id', '=', 'highlights.estado_id')
 					->select('ciudades.nombre', 'ciudades.id')
-					->where('estado_id', '=', $id)
+					->where('highlights.estado_id', '=', $id)
 					->groupby('ciudades.nombre')
 					->distinct()
 					->get();
