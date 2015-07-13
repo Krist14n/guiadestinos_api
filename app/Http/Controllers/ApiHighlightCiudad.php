@@ -4,6 +4,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Highlight;
+use Response;
+use DB;
 
 class ApiHighlightCiudad extends Controller {
 
@@ -35,6 +38,7 @@ class ApiHighlightCiudad extends Controller {
 	public function store()
 	{
 		//
+
 	}
 
 	/**
@@ -46,6 +50,12 @@ class ApiHighlightCiudad extends Controller {
 	public function show($id)
 	{
 		//
+		$highlights = DB::table('highlights')
+					->where('ciudad_id', '=', $id)
+					->get();
+
+		return Response::json($highlights);
+
 	}
 
 	/**
