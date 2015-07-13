@@ -56,4 +56,11 @@ Route::resource("api_spas_ciudades", "ApiSpasCiudadesController");
 
 Route::resource("api_spa_ciudad", "ApiSpaCiudadController");
 
+Route::resource("api_highlights_estados", "ApiHighlightEstados");
+
+Route::resource("api_highlights_ciudades", "ApiHighlightCiudades");
+
+Route::resource("api_highlight_ciudad", "ApiHighlightCiudad");
+
+
 
