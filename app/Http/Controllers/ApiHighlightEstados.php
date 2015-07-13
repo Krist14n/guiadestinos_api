@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Highlight;
 use App\Estado;
 use Response;
-
+use DB;
 
 class ApiHighlightEstados extends Controller {
 
