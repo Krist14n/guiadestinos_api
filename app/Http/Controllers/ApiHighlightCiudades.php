@@ -51,11 +51,13 @@ class ApiHighlightCiudades extends Controller {
 	public function show($id)
 	{
 		//
-		$ciudades = DB::table('highlights')
-					->join('ciudades', 'highlights.ciudad_id', '=', 'ciudades.id')
-					->join('estados', 'highlights.estado_id','=', 'estados.id')
-					->select('highlights.nombre', 'highlights.descripcion','highlights.lista_highlights','highlights.foto','ciudades.nombre as nombre_ciudad','estados.nombre as nombre_estado')
-					->where('ciudades.id', '=', $id)
+		$ciudades = DB::table('ciudades')
+					->join('highlights', 'highlights.ciudad_id', '=', 'ciudades.id')
+					->join('highlights', 'highlights.estado_id', '=', 'estados.id')
+					->select('ciudades.nombre', 'ciudades.id')
+					->where('highlights.estados_id', '=', $id)
+					->groupby('ciudades.nombre')
+					->distinct()
 					->get();
 
 		return Response::json($ciudades);
