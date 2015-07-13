@@ -2,8 +2,13 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+
+use App\Highlight;
+use App\Estado;
+use App\Ciudad;
+use Response;
+use DB;
 
 class ApiHighlightCiudades extends Controller {
 
@@ -46,6 +51,15 @@ class ApiHighlightCiudades extends Controller {
 	public function show($id)
 	{
 		//
+		$ciudades = DB::table('highlights')
+					->join('ciudades', 'highlights.ciudad_id', '=', 'ciudades.id')
+					->join('estados', 'highlights.estado_id','=', 'estados.id')
+					->select('highlights.nombre', 'highlights.descripcion','highlights.lista_highlights','highlights.foto','ciudades.nombre as nombre_ciudad','estados.nombre as nombre_estado')
+					->where('ciudades.id', '=', $id)
+					->get();
+
+		return Response::json($ciudades);
+
 	}
 
 	/**
