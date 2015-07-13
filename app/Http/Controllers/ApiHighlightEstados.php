@@ -1,13 +1,10 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Highlight;
 use App\Estado;
-use Illuminate\http\Request;
 
 class ApiHighlightEstados extends Controller {
 
