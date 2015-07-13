@@ -17,7 +17,7 @@ class ApiHighlightEstados extends Controller {
 	{
 		//
 
-		return Response::json("hola");
+		return ("hola");
 	}
 
 	/**
