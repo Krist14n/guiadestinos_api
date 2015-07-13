@@ -7,6 +7,7 @@ use App\Highlight;
 use App\Estado;
 use Response;
 
+
 class ApiHighlightEstados extends Controller {
 
 	/**
@@ -14,12 +15,14 @@ class ApiHighlightEstados extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index(Highlight $highlight)
+	public function index()
 	{
 		//
-		$estado = $highlight->where('estado_id', '=', '9')->get();
+		$estados = DB::table('estados')
+					->join('highlights', 'highlights.estado_id', '=', 'estados.id')
+					->get();
 
-		return Response::json($estado);
+		return Response::json($estados);
 	}
 
 	/**
