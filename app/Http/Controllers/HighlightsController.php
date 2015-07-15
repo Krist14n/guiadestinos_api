@@ -88,7 +88,7 @@ class HighlightsController extends Controller {
 			'nombre' 			=> $nombre,
 			'descripcion' 		=> $descripcion,
 			'lista_highlights' 	=> $highlights,
-			'foto' 				=> $ruta_imagen.$nombre_imagen
+			'foto' 				=> $nombre_imagen
 		));
 
 
@@ -166,7 +166,7 @@ class HighlightsController extends Controller {
 				'nombre' 			=> $nombre,
 				'descripcion' 		=> $descripcion,
 				'lista_highlights' 	=> $highlights,
-				'foto' 				=> $ruta_imagen.$nombre_imagen,
+				'foto' 				=> $nombre_imagen,
 				'token'				=> $token
 			));
 
