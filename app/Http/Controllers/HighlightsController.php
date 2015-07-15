@@ -76,7 +76,7 @@ class HighlightsController extends Controller {
 		if ($request->file('foto')) {
 			
 			$imagen 		=	$request->file('foto');
-			$ruta_imagen 	=	storage_path().'/images/';
+			$ruta_imagen 	=	public_path().'/img/';
 			$nombre_imagen  =   str_random(6).'_'.$imagen->getClientOriginalName();
 			$uploadSuccess 	=   $imagen->move($ruta_imagen, $nombre_imagen);
 
@@ -155,7 +155,7 @@ class HighlightsController extends Controller {
 		if ($request->file('foto')) {
 			
 			$imagen 		=	$request->file('foto');
-			$ruta_imagen 	=	storage_path().'/images/';
+			$ruta_imagen 	=	public_path().'/img/';
 			$nombre_imagen  =   str_random(6).'_'.$imagen->getClientOriginalName();
 			$uploadSuccess 	=   $imagen->move($ruta_imagen, $nombre_imagen);
 
