@@ -51,7 +51,7 @@ class ApiHighlightCiudad extends Controller {
 	{
 		//
 		$highlights = DB::table('highlights')
-					->select('nombre', 'descripcion','lista_highlights','foto')
+					->select('foto', 'descripcion','nombre','lista_highlights')
 					->where('ciudad_id', '=', $id)
 					->get();
 
