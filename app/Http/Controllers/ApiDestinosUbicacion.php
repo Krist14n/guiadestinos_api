@@ -27,7 +27,18 @@ class ApiDestinosUbicacion extends Controller {
 					->select('direcciones.latitud', 'direcciones.longitud', 'restaurantes.id', 'restaurantes.nombre', 'restaurantes.categoria_id')
 					->get();
 
-		return Response::json($ubicacion_restaurantes);
+
+		$ubicacion_hoteles = DB::table('direcciones')
+					->join('hoteles', 'direcciones.restaurante_id', '=', 'hoteles.id')
+					->select('direcciones.latitud', 'direcciones.longitud', 'hoteles.id', 'hoteles.nombre', 'hoteles.categoria_id')
+					->get(); 
+
+		$ubicacion_spas = DB::table('direcciones')
+					->join('hoteles', 'direcciones.restaurante_id', '=', 'spas.id')
+					->select('direcciones.latitud', 'direcciones.longitud', 'spas.id', 'spas.nombre', 'spas.categoria_id')
+					->get(); 
+
+		return Response::json($ubicacion_hoteles);
 	}
 
 	/**
