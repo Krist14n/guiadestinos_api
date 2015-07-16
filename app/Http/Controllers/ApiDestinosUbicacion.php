@@ -42,7 +42,7 @@ class ApiDestinosUbicacion extends Controller {
 					->select('direcciones.latitud', 'direcciones.longitud', 'spas.id', 'spas.nombre', 'spas.categoria_id')
 					->get(); 
 
-		return $ubicacion_restaurantes;
+		return array_merge($ubicacion_restaurantes,$ubicacion_hoteles);
 
 		//return Response::json($b);
 	}
