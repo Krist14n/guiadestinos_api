@@ -22,12 +22,12 @@ class ApiDestinosUbicacion extends Controller {
 	{
 		//
 
-		$ubicacion = DB::table('direcciones')
+		$ubicacion_restaurantes = DB::table('direcciones')
 					->join('restaurantes', 'direcciones.restaurante_id', '=', 'restaurantes.id')
-					->select('direcciones.latitud', 'direcciones.longitud', 'restaurantes.id', 'restaurantes.name', 'restaurantes.categoria_id')
+					->select('direcciones.latitud', 'direcciones.longitud', 'restaurantes.id', 'restaurantes.nombre', 'restaurantes.categoria_id')
 					->get();
 
-		return Response::json($ubicacion);
+		return Response::json($ubicacion_restaurantes);
 	}
 
 	/**
