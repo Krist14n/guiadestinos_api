@@ -26,7 +26,7 @@ class ApiDestinosUbicacion extends Controller {
 					->join('restaurantes', 'direcciones.restaurante_id', "=", "restaurantes.id")
 					->join('hoteles', 'direcciones.hotel_id', "=", "hoteles.id")
 					->join('spas', 'direcciones.spa_id', '=','spas.id')
-					->select('restaurante_id', 'hotel_id', 'spa_id', "latitud", "longitud", "restaurantes.nombre", "hoteles.nombre", "spas.nombre", "restaurantes.categoria_id", "hoteles.categoria_id", "spas.categopria_id")
+					->select('restaurante_id', 'hotel_id', 'spa_id', "latitud", "longitud", "restaurantes.nombre", "hoteles.nombre", "spas.nombre", "restaurantes.categoria_id", "hoteles.categoria_id", "spas.categoria_id")
 					->groupby("direcciones.id")
 					->get();
 
