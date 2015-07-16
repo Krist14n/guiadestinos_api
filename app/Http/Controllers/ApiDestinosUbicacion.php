@@ -38,7 +38,7 @@ class ApiDestinosUbicacion extends Controller {
 					->select('direcciones.latitud', 'direcciones.longitud', 'spas.id', 'spas.nombre', 'spas.categoria_id')
 					->get(); 
 
-		return Response::json($ubicacion_hoteles);
+		return Response::json($ubicacion_spas);
 	}
 
 	/**
