@@ -42,11 +42,15 @@ class ApiDestinosUbicacion extends Controller {
 					->select('direcciones.latitud', 'direcciones.longitud', 'spas.id', 'spas.nombre', 'spas.categoria_id')
 					->get(); 
 
-		foreach(json_decode($ubicacion_restaurantes, true) as $key => $array){
-		 $a[$key] = array_merge(json_decode($ubicacion_hoteles, true)[$key],$array);
+		foreach(json_decode("'"+$ubicacion_restaurantes+"'", true) as $key => $array){
+		 $a[$key] = array_merge(json_decode("'"+$ubicacion_hoteles+"'", true)[$key],$array);
 		}
 
-		return Response::json($a);
+		foreach(json_decode("'"+$a+"'", true) as $key => $array){
+		 $b[$key] = array_merge(json_decode("'"+$ubicacion_spas+"'", true)[$key],$array);
+		}
+
+		return Response::json($b);
 	}
 
 	/**
