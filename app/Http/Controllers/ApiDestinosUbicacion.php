@@ -22,6 +22,9 @@ class ApiDestinosUbicacion extends Controller {
 	{
 		//
 
+		$a =[];
+		$b =[];
+
 		$ubicacion_restaurantes = DB::table('direcciones')
 					->join('restaurantes', 'direcciones.restaurante_id', '=', 'restaurantes.id')
 					->select('direcciones.latitud', 'direcciones.longitud', 'restaurantes.id', 'restaurantes.nombre', 'restaurantes.categoria_id')
@@ -33,12 +36,17 @@ class ApiDestinosUbicacion extends Controller {
 					->select('direcciones.latitud', 'direcciones.longitud', 'hoteles.id', 'hoteles.nombre', 'hoteles.categoria_id')
 					->get(); 
 
+
 		$ubicacion_spas = DB::table('direcciones')
 					->join('spas', 'direcciones.restaurante_id', '=', 'spas.id')
 					->select('direcciones.latitud', 'direcciones.longitud', 'spas.id', 'spas.nombre', 'spas.categoria_id')
 					->get(); 
 
-		return Response::json($ubicacion_spas);
+		foreach(json_decode($ubicacion_restaurantes, true) as $key => $array){
+		 $a[$key] = array_merge(json_decode($ubicacion_hoteles, true)[$key],$array);
+		}
+
+		return Response::json($a);
 	}
 
 	/**
