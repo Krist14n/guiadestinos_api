@@ -34,7 +34,7 @@ class ApiDestinosUbicacion extends Controller {
 					->get(); 
 
 		$ubicacion_spas = DB::table('direcciones')
-					->join('hoteles', 'direcciones.restaurante_id', '=', 'spas.id')
+					->join('spas', 'direcciones.restaurante_id', '=', 'spas.id')
 					->select('direcciones.latitud', 'direcciones.longitud', 'spas.id', 'spas.nombre', 'spas.categoria_id')
 					->get(); 
 
