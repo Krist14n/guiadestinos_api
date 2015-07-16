@@ -25,7 +25,6 @@ class ApiDestinosUbicacion extends Controller {
 		$ubicacion = DB::table('direcciones')
 					->join('restaurantes', 'direcciones.restaurante_id', "=", "restaurantes.id")
 					->join('hoteles', 'direcciones.hotel_id', "=", "hoteles.id")
-					->groupby("direcciones.id")
 					->get();
 
 		return Response::json($ubicacion);
