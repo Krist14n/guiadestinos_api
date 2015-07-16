@@ -62,5 +62,7 @@ Route::resource("api_highlights_ciudades", "ApiHighlightCiudades");
 
 Route::resource("api_highlight_ciudad", "ApiHighlightCiudad");
 
+Route::resource("api_destinos_ubicacion", "ApiDestinosUbicacion");
+
 
 

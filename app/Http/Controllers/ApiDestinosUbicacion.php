@@ -1,0 +1,100 @@
+<?php namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use App\Direccion;
+use App\Restaurante;
+use App\Hotel;
+use App\Spa;
+use Response;
+use DB;
+
+class ApiDestinosUbicacion extends Controller {
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		//
+
+		$ubicacion = DB::table('direcciones')
+					->join('restaurantes', 'direcciones.restaurante_id', "=", "restaurantes.id")
+					->join('hoteles', 'direcciones.hotel_id', "=", "hoteles.id")
+					->join('spas', 'direcciones.spa_id', '=','spas.id')
+					->select('restaurante_id', 'hotel_id', 'spa_id', "latitud", "longitud", "restaurantes.nombre", "hoteles.nombre", "spas.nombre", "restaurantes.categoria_id", "hoteles.categoria_id", "spas.categopria_id")
+					->groupby("direcciones.id")
+					->get();
+
+		return Response::json($ubicacion);
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		//
+	}
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+		//
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		//
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+		//
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
+	{
+		//
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
+
+}
