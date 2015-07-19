@@ -27,6 +27,7 @@ class ApiCiudadesDescuentos extends Controller {
 								->where('restaurantes.promocion', '!=', '')
 								->whereNull('restaurantes.deleted_at')
 								->select('ciudades.id','ciudades.nombre')
+								->distinct()
 								->get();
 
 		return Response::json($ciudades_descuentos);
