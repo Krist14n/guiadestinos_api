@@ -66,7 +66,7 @@ Route::resource("api_destinos_ubicacion", "ApiDestinosUbicacion");
 
 Route::resource("api_destinos_ciudades_descuentos", "ApiCiudadesDescuentos");
 
-Route::resource("api_destinos_restaurantes_descuentos", "ApiRestaurantesDescuentos");
+Route::resource("api_restaurantes_descuentos", "ApiRestaurantesDescuentos");
 
 
 
