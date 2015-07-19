@@ -25,7 +25,8 @@ class ApiCiudadesDescuentos extends Controller {
 		$ciudades_descuentos = DB::table('ciudades')
 								->join('restaurantes', 'ciudades.id', '=', 'restaurantes.ciudad_id')
 								->where('restaurantes.promocion', '!=', '')
-								->whereNull('deleted_at')
+								->whereNull('restaurantes.deleted_at')
+								->select('ciudades.id','ciudades.nombre')
 								->get();
 
 		return Response::json($ciudades_descuentos);
