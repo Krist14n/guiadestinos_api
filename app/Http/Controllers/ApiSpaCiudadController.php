@@ -54,6 +54,7 @@ class ApiSpaCiudadController extends Controller {
 		$spa = DB::table('spas')
 					->join('direcciones', 'spas.id', '=', 'direcciones.spa_id')
 					->where('spas.id', '=', $id)
+					->whereNull('spas.deleted_at')
 					->get();
 
 		return Response::json($spa);

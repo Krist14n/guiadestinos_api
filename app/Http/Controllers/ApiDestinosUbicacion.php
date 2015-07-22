@@ -28,18 +28,21 @@ class ApiDestinosUbicacion extends Controller {
 		$ubicacion_restaurantes = DB::table('direcciones')
 					->join('restaurantes', 'direcciones.restaurante_id', '=', 'restaurantes.id')
 					->select('direcciones.latitud', 'direcciones.longitud', 'restaurantes.id', 'restaurantes.nombre', 'restaurantes.categoria_id')
+					->whereNull('restaurantes.deleted_at')
 					->get();
 
 
 		$ubicacion_hoteles = DB::table('direcciones')
 					->join('hoteles', 'direcciones.hotel_id', '=', 'hoteles.id')
-					->select('direcciones.latitud', 'direcciones.longitud', 'hoteles.id', 'hoteles.nombre', 'hoteles.categoria_id')
+					->select('hoteles.direcciones.latitud', 'direcciones.longitud', 'hoteles.id', 'hoteles.nombre', 'hoteles.categoria_id')
+					->whereNull('deleted_at')
 					->get(); 
 
 
 		$ubicacion_spas = DB::table('direcciones')
 					->join('spas', 'direcciones.spa_id', '=', 'spas.id')
 					->select('direcciones.latitud', 'direcciones.longitud', 'spas.id', 'spas.nombre', 'spas.categoria_id')
+					->whereNull('spas.deleted_at')
 					->get(); 
 
 		$a = array_merge($ubicacion_restaurantes,$ubicacion_hoteles);

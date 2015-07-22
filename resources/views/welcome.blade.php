@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Laravel</title>
+		<title>Guia Destinos MB</title>
 		
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
@@ -40,7 +40,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Guía Destinos MB API</div>
+				<div class="title"><a href="https://api.guiadestinos.com/home">Guía Destinos MB</a></div>
 			</div>
 		</div>
 	</body>

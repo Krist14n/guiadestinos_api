@@ -52,9 +52,25 @@ class RegionesController extends Controller {
 	{
 		//
 
-		$this->region->create($request->all());
+		$rules = array(
+			'nombre'  => 'required|alpha|unique'
+		);
 
-		return redirect('regiones');
+		$validator = Validator::make($request->all(), $rules);
+
+		if($validator->fails())
+		{
+			$messages = $validator->messages();
+			return Redirect::to('regiones/create')->withErrors($validator);
+
+		}else{
+			
+			$this->region->create($request->all());
+
+			return redirect('regiones');
+		}
+
+		
 
 	}
 
