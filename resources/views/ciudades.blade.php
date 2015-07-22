@@ -1,9 +1,5 @@
 @extends('app')
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
-</script>
+
 @section('content')
 <a href="/ciudades/create">
 	<button type="button" class="btn btn-primary" aria-label="Left Align">
@@ -11,7 +7,7 @@ $(document).ready( function () {
 	</button>
 </a>
 <div class="table-responsive">
-	<table class="table table-striped" id="table_id">
+	<table class="table table-striped" id="table">
 		<thead>
         <tr>
           <th>id</th>

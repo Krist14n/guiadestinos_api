@@ -1,9 +1,5 @@
 @extends('app')
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
-</script>
+
 
 @section('content')
 <a href="/regiones/create">
