@@ -7,7 +7,7 @@
 	</button>
 </a>
 <div class="table-responsive">
-	<table class="table table-striped" id="table">
+	<table class="table table-striped" id="table_id">
 		<thead>
         <tr>
           <th>id</th>
