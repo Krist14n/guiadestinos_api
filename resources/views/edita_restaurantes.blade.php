@@ -17,12 +17,12 @@
 
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
-			{!! Form::text('nombre', $restaurante->nombre, ['class'=> 'form-control', 'id' => 'nombre']) !!}
+			{!! Form::text('nombre', $restaurante->nombre, ['class'=> 'form-control', 'id' => 'nombre', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="tipo-comida">Tipo de Comida</label>
-			{!! Form::text('tipo_comida', $restaurante->tipo_comida, ['class'=> 'form-control', 'id' => 'tipo-comida']) !!}
+			{!! Form::text('tipo_comida', $restaurante->tipo_comida, ['class'=> 'form-control', 'id' => 'tipo-comida', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
@@ -31,26 +31,26 @@
 
 		<div class="form-group">
 			<label for="descripcion">Descripción</label>
-			{!! Form::textarea('descripcion', $restaurante->descripcion, ['class'=> 'form-control', 'id' => 'descripcion']) !!}
+			{!! Form::textarea('descripcion', $restaurante->descripcion, ['class'=> 'form-control', 'id' => 'descripcion', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="recomendacion">Recomendación MB</label>
-			{!! Form::textarea('recomendacion', $restaurante->recomendacion_mb, ['class'=> 'form-control', 'id' => 'recomendacion']) !!}
+			{!! Form::textarea('recomendacion', $restaurante->recomendacion_mb, ['class'=> 'form-control', 'id' => 'recomendacion', 'required' => 'required']) !!}
 
 		<div class="form-group">
 			<label for="direccion">Dirección</label>
-			{!! Form::textarea('direccion', $direccion->direccion, ['class'=> 'form-control', 'id' => 'direccion']) !!}
+			{!! Form::textarea('direccion', $direccion->direccion, ['class'=> 'form-control', 'id' => 'direccion', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="latitud">Latitud</label>
-			{!! Form::text('latitud', $direccion->latitud, ['class'=> 'form-control', 'id' => 'latitud']) !!}
+			{!! Form::text('latitud', $direccion->latitud, ['class'=> 'form-control', 'id' => 'latitud', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="longitud">Longitud</label>
-			{!! Form::text('longitud', $direccion->longitud, ['class'=> 'form-control', 'id' => 'longitud']) !!}
+			{!! Form::text('longitud', $direccion->longitud, ['class'=> 'form-control', 'id' => 'longitud', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">

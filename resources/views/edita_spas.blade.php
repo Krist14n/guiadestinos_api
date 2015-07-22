@@ -17,7 +17,7 @@
 
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
-			{!! Form::text('nombre', $spa->nombre, ['class'=> 'form-control', 'id' => 'nombre']) !!}
+			{!! Form::text('nombre', $spa->nombre, ['class'=> 'form-control', 'id' => 'nombre', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
@@ -26,27 +26,27 @@
 
 		<div class="form-group">
 			<label for="descripcion">Descripción</label>
-			{!! Form::textarea('descripcion', $spa->descripcion, ['class'=> 'form-control', 'id' => 'descripcion']) !!}
+			{!! Form::textarea('descripcion', $spa->descripcion, ['class'=> 'form-control', 'id' => 'descripcion', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="tratamientos">Tratamientos (* separados por punto y coma ; )</label>
-			{!! Form::textarea('tratamientos', $spa->tratamientos, ['class'=> 'form-control', 'id' => 'tratamientos']) !!}
+			{!! Form::textarea('tratamientos', $spa->tratamientos, ['class'=> 'form-control', 'id' => 'tratamientos', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="direccion">Dirección</label>
-			{!! Form::textarea('direccion', $direccion->direccion, ['class'=> 'form-control', 'id' => 'direccion']) !!}
+			{!! Form::textarea('direccion', $direccion->direccion, ['class'=> 'form-control', 'id' => 'direccion', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="latitud">Latitud</label>
-			{!! Form::text('latitud', $direccion->latitud, ['class'=> 'form-control', 'id' => 'latitud']) !!}
+			{!! Form::text('latitud', $direccion->latitud, ['class'=> 'form-control', 'id' => 'latitud', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
 			<label for="longitud">Longitud</label>
-			{!! Form::text('longitud', $direccion->longitud, ['class'=> 'form-control', 'id' => 'longitud']) !!}
+			{!! Form::text('longitud', $direccion->longitud, ['class'=> 'form-control', 'id' => 'longitud', 'required' => 'required']) !!}
 
 		</div>
 		<div class="form-group">
