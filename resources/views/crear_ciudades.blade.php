@@ -16,7 +16,7 @@
 
 		<div class="form-group">
 
-			{!! Form::text('nombre', null, ['class'=> 'form-control']) !!}
+			{!! Form::text('nombre', null, ['class'=> 'form-control', 'required' => 'required']) !!}
 
 		</div>
 
@@ -25,7 +25,14 @@
 			{!! Form::submit('Agregar', ['class' => 'btn btn-primary  ']) !!}
 
 		</div>
-	
+		
 	{!! Form::close() !!}
+	@if ($errors->has())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>        
+            @endforeach
+        </div>
+    @endif
 </div>
 @endsection

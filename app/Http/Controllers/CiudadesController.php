@@ -6,6 +6,8 @@ use App\Ciudad;
 use App\Region;
 use App\Estado;
 use Illuminate\http\Request;
+use Illuminate\Support\Facades\Validator;
+use Redirect;
 
 class CiudadesController extends Controller {
 	/**
@@ -54,10 +56,22 @@ class CiudadesController extends Controller {
 	public function store(Request $request)
 	{
 		//
-		$this->ciudad->create($request->all());
+		$rules = array(
+			'nombre'  => 'required|alpha_dash|unique:regiones'
+		);
 
-		return redirect('ciudades');
+		$validator = Validator::make($request->all(), $rules);
 
+		if($validator->fails())
+		{
+			$messages = $validator->messages();
+			return Redirect::to('ciudades/create')->withErrors($validator);
+
+		}else{
+
+			$this->ciudad->create($request->all());
+			return redirect('ciudades');
+		}
 	}
 
 	/**

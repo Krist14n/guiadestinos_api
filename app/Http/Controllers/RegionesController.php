@@ -116,7 +116,7 @@ class RegionesController extends Controller {
 	public function update($id, Request $request)
 	{
 		//
-
+		
 		$region = $this->region->whereId($id)->first();
 
 		$region->nombre = $request->get('nombre');
