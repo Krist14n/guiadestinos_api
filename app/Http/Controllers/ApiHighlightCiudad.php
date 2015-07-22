@@ -53,6 +53,7 @@ class ApiHighlightCiudad extends Controller {
 		$highlights = DB::table('highlights')
 					->select('foto', 'descripcion','nombre as hightlight_title','lista_highlights')
 					->where('ciudad_id', '=', $id)
+					->whereNull('highlights.deleted_at')
 					->get();
 
 		return Response::json($highlights);
