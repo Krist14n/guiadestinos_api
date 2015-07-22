@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Region;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\Validator;
+use Redirect;
 
 class RegionesController extends Controller {
 	/**
@@ -62,7 +63,7 @@ class RegionesController extends Controller {
 		if($validator->fails())
 		{
 			$messages = $validator->messages();
-			return ('regiones/create')->withErrors($validator);
+			return Redirect::to('regiones/create')->withErrors($validator);
 
 		}else{
 			
