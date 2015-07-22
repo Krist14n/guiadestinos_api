@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Estado;
 use App\Region;
 use Illuminate\http\Request;
+use Illuminate\Support\Facades\Validator;
+use Redirect;
 
 class EstadosController extends Controller {
 	/**
@@ -53,11 +55,22 @@ class EstadosController extends Controller {
 	public function store(Request $request)
 	{
 		//
+		$rules = array(
+			'nombre'  => 'required|alpha_dash|unique:regiones'
+		);
 
-		$this->estado->create($request->all());
+		$validator = Validator::make($request->all(), $rules);
 
-		return redirect('estados');
+		if($validator->fails())
+		{
+			$messages = $validator->messages();
+			return Redirect::to('estados/create')->withErrors($validator);
 
+		}else{
+			
+			$this->estado->create($request->all());
+			return redirect('estados');
+		}
 	}
 
 	/**
