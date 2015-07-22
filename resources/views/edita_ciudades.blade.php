@@ -8,7 +8,7 @@
 
 		<div class="form-group">
 
-			{!! Form::text('nombre', null, ['class'=> 'form-control']) !!}
+			{!! Form::text('nombre', null, ['class'=> 'form-control','required' => 'required']) !!}
 
 		</div>
 
