@@ -55,7 +55,7 @@ class RegionesController extends Controller {
 		//
 
 		$rules = array(
-			'nombre'  => 'required|alpha|unique'
+			'nombre'  => 'required|alpha|unique:regiones'
 		);
 
 		$validator = Validator::make($request->all(), $rules);
