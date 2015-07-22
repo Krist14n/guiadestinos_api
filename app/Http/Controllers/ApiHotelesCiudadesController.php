@@ -52,6 +52,9 @@ class ApiHotelesCiudadesController extends Controller {
 	{
 		//
 		return Response::json($hotel->where('ciudad_id','=', $id)->where('categoria_id','=','1')->get());
+
+		
+
 	}
 
 	/**

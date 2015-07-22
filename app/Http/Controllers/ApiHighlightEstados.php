@@ -22,6 +22,7 @@ class ApiHighlightEstados extends Controller {
 					->join('highlights', 'highlights.estado_id', '=', 'estados.id')
 					->join('ciudades', 'ciudades.estado_id', '=', 'estados.id')
 					->select('estados.nombre', 'estados.id as estado_id', 'ciudades.id as ciudad_id')
+					->whereNull('ciudades.deleted_at')
 					->groupby('estados.nombre')
 					->distinct()
 					->get();
