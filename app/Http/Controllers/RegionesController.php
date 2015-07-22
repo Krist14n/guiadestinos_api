@@ -62,7 +62,7 @@ class RegionesController extends Controller {
 		if($validator->fails())
 		{
 			$messages = $validator->messages();
-			return Redirect::to('regiones/create')->withErrors($validator);
+			return ('regiones/create')->withErrors($validator);
 
 		}else{
 			
