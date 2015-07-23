@@ -35,7 +35,7 @@ class ApiDestinosUbicacion extends Controller {
 		$ubicacion_hoteles = DB::table('direcciones')
 					->join('hoteles', 'direcciones.hotel_id', '=', 'hoteles.id')
 					->select('direcciones.latitud', 'direcciones.longitud', 'hoteles.id', 'hoteles.nombre', 'hoteles.categoria_id')
-					->whereNull('deleted_at')
+					->whereNull('hoteles.deleted_at')
 					->get(); 
 
 
