@@ -21,8 +21,8 @@ class ApiHotelesCiudadesController extends Controller {
 	public function index()
 	{
 		//
-		$ciuades = DB::table('ciudades')
-					->join('hoteles', 'ciudades.id', '=', 'hoteles.ciudad_id')
+		$ciuades = DB::table('hoteles')
+					->join('ciudades', 'ciudades.id', '=', 'hoteles.ciudad_id')
 					->whereNull('hoteles.deleted_at')
 					->get();
 
