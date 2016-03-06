@@ -22,7 +22,7 @@ class ApiHotelesCiudadesController extends Controller {
 		//
 		$ciuades = DB::table('ciudades')
 					->join('hoteles', 'ciudades.id', '=', 'hoteles.ciudad_id')
-					->whereNull('ciudades.deleted_at')
+					->whereNull('hoteles.deleted_at')
 					->get();
 
 		return Response::json($ciuades);
