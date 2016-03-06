@@ -9,6 +9,7 @@ use App\Region;
 use App\Estado;
 use App\Ciudad;
 use App\Restaurante;
+use DB;
 
 class ApiRestaurantesCiudadesController extends Controller {
 
@@ -20,6 +21,13 @@ class ApiRestaurantesCiudadesController extends Controller {
 	public function index()
 	{
 		//
+		$ciuades = DB::table('restaurantes')
+					->join('ciudades', 'ciudades.id', '=', 'restaurantes.ciudad_id')
+					->whereNull('restaurantes.deleted_at')
+					->groupBy('ciudades.id')
+					->get();
+
+		return Response::json($ciuades);
 	}
 
 	/**

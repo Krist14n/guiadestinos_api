@@ -9,6 +9,7 @@ use App\Region;
 use App\Estado;
 use App\Ciudad;
 use App\Spa;
+use DB;
 
 class ApiSpasCiudadesController extends Controller {
 
@@ -20,6 +21,13 @@ class ApiSpasCiudadesController extends Controller {
 	public function index()
 	{
 		//
+		$ciuades = DB::table('spas')
+					->join('ciudades', 'ciudades.id', '=', 'spas.ciudad_id')
+					->whereNull('spas.deleted_at')
+					->groupBy('ciudades.id')
+					->get();
+
+		return Response::json($ciuades);
 	}
 
 	/**
