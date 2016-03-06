@@ -9,6 +9,7 @@ use App\Region;
 use App\Estado;
 use App\Ciudad;
 use App\Hotel;
+use DB;
 
 class ApiHotelesCiudadesController extends Controller {
 
